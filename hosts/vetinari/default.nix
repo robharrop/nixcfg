@@ -2,7 +2,7 @@
 
 let
   username = "robharrop";
-
+  vscode-marketplace = inputs.nix-vscode-extensions.extensions.${inputs.arch}.vscode-marketplace;
 in
 {
 
@@ -18,7 +18,8 @@ in
       vim
       obsidian
       raycast
-      )
+      bitwarden-cli
+
     ];
 
   fonts.fontDir.enable = true;
@@ -52,6 +53,7 @@ in
     };
     
     casks = [
+      "bitwarden"
       "firefox"
       "1password"
       "whatsapp"
@@ -103,10 +105,17 @@ home-manager.users.robharrop = { pkgs, ... }: {
 
   programs.vscode = {
     enable = true;
-    extensions = with vscode-extensions; [
+    extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
-    ];
-  }
+      dracula-theme.theme-dracula
+      vscodevim.vim
+    ] ++ (with vscode-marketplace; [
+      golang.go
+    ]);
+    userSettings = {
+      "workbench.colorTheme" =  "Dracula";
+    };
+  };
 
   programs.zsh = {
     enable = true;
