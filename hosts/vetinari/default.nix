@@ -165,6 +165,7 @@ in
       shellAliases = {
         ga = "git add";
         gc = "git commit";
+        gp = "git push";
         gco = "git checkout";
         gst = "git status";
 
