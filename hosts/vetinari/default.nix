@@ -13,13 +13,10 @@ in
   environment.systemPackages =
     with pkgs;[
       emacs
-      git
       mas
       vim
       obsidian
       raycast
-      bitwarden-cli
-
     ];
 
   fonts.fontDir.enable = true;
@@ -33,7 +30,18 @@ in
   services.nix-daemon.enable = true;
 
   system.defaults = {
-    dock.autohide = true;
+    dock = {
+      autohide = true;
+
+      # lock screen in top left corner
+      wvous-tl-corner = 5;
+    };
+
+    screensaver = {
+      askForPassword = true;
+      askForPasswordDelay = 5;
+    };
+
     # use standard function keys
     NSGlobalDomain."com.apple.keyboard.fnState" = true;
   };
@@ -46,18 +54,20 @@ in
 
   homebrew = {
     enable = true;
-    
+
     onActivation = {
       autoUpdate = true;
       cleanup = "uninstall";
     };
-    
+
     casks = [
       "bitwarden"
       "firefox"
       "1password"
       "whatsapp"
       "chromium"
+      "steam"
+      "epic-games"
     ];
 
     masApps = {
@@ -65,69 +75,107 @@ in
     };
   };
 
-home-manager.useGlobalPkgs = true;
-home-manager.useUserPackages = false;
-home-manager.users.robharrop = { pkgs, ... }: {
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = false;
+  home-manager.users.robharrop = { pkgs, ... }: {
 
-  home.stateVersion = "23.05"; 
+    home.stateVersion = "23.05";
 
-  programs.home-manager.enable = true;
+    home.packages = with pkgs; [
+      bitwarden-cli
+      htop
+      jq
+    ];
 
-  programs.exa = {
-    enable = true;
-    enableAliases = true;  
-  };
+    programs.home-manager.enable = true;
 
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.kitty = {
-    enable = true;
-    environment = {
-      "LS_COLORS" = "1";
+    programs.exa = {
+      enable = true;
+      enableAliases = true;
     };
-    font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 14;
+
+    programs.fzf = {
+      enable = true;
+      enableZshIntegration = true;
     };
-    settings = {
-      macos_option_as_alt = "yes";
-      macos_titlebar_color = "#282a36";
+
+    programs.gh = {
+      enable = true;
     };
-    theme = "Dracula";
-  };
+    programs.git = {
+      enable = true;
 
-  programs.starship = {
-    enable = true;
-  };
+      userName = "Rob Harrop";
+      userEmail = "rob@robharrop.dev";
+    };
 
-  programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      bbenoist.nix
-      dracula-theme.theme-dracula
-      vscodevim.vim
-    ] ++ (with vscode-marketplace; [
-      golang.go
-    ]);
-    userSettings = {
-      "workbench.colorTheme" =  "Dracula";
+    programs.kitty = {
+      enable = true;
+      environment = {
+        "LS_COLORS" = "1";
+      };
+      extraConfig = ''
+        map cmd+1 goto_tab 1
+        map cmd+2 goto_tab 2
+        map cmd+3 goto_tab 3
+        map cmd+4 goto_tab 4
+        map cmd+5 goto_tab 5
+        map cmd+6 goto_tab 6
+        map cmd+7 goto_tab 7
+        map cmd+8 goto_tab 8
+        map cmd+9 goto_tab 9
+      '';
+      font = {
+        name = "JetBrainsMono Nerd Font";
+        size = 14;
+      };
+      settings = {
+        macos_option_as_alt = "yes";
+        macos_titlebar_color = "#282a36";
+      };
+      theme = "Dracula";
+    };
+
+    programs.starship = {
+      enable = true;
+    };
+
+    programs.vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+        dracula-theme.theme-dracula
+        vscodevim.vim
+      ] ++ (with vscode-marketplace; [
+        golang.go
+        jakebecker.elixir-ls
+        jamesottaway.nix-develop
+        phoenixframework.phoenix
+      ]);
+      userSettings = {
+        "workbench.colorTheme" = "Dracula";
+      };
+    };
+
+    programs.zsh = {
+      enable = true;
+      enableAutosuggestions = true;
+      enableSyntaxHighlighting = true;
+
+      shellAliases = {
+        ga = "git add";
+        gc = "git commit";
+        gco = "git checkout";
+        gst = "git status";
+
+      };
     };
   };
 
-  programs.zsh = {
-    enable = true;
-    enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+  users.users.robharrop = {
+    name = "robharrop";
+    home = "/Users/robharrop";
   };
-};
-
-users.users.robharrop = {
-  name = "robharrop";
-  home = "/Users/robharrop";
-};
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;

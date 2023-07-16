@@ -48,10 +48,10 @@
           inputs = inputs // { inherit arch; };
 
           system = arch;
-          modules = [ 
+          modules = [
             home-manager.darwinModules.home-manager
-            ./hosts/vetinari/default.nix 
-          ]; 
+            ./hosts/vetinari/default.nix
+          ];
         };
     };
 
