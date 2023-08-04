@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-23.05-darwin";
+    unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +25,7 @@
   };
 
   # add the inputs declared above to the argument attribute set
-  outputs = inputs @ { self, nixpkgs, home-manager, darwin, flake-utils, ... }:
+  outputs = inputs @ { self, nixpkgs, unstable, home-manager, darwin, flake-utils, ... }:
 
     flake-utils.lib.eachSystem [ "aarch64-darwin" "x86_64-linux" ]
       (

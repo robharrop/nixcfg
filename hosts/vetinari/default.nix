@@ -3,10 +3,19 @@
 let
   username = "robharrop";
   vscode-marketplace = inputs.nix-vscode-extensions.extensions.${inputs.arch}.vscode-marketplace;
+  unstable = import "${inputs.unstable}" {
+    system = inputs.arch;
+    config.allowUnfree = true;
+  };
 in
 {
 
   nixpkgs.config.allowUnfree = true;
+
+  nix.extraOptions = ''
+    auto-optimise-store = true
+    experimental-features = nix-command flakes
+  '';
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -16,8 +25,7 @@ in
       mas
       vim
       obsidian
-      raycast
-    ];
+    ] ++ [ unstable.raycast ];
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
