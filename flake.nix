@@ -8,8 +8,8 @@
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    tweag.url = "github:tweag";
-    tweag.inputs.nixpkgs.follows = "nixpkgs";
+    nickel.url = "github:tweag/nickel";
+    nickel.inputs.nixpkgs.follows = "nixpkgs";
 
     # nix will normally use the nixpkgs defined in home-managers inputs, we only want one copy of nixpkgs though
     darwin.url = "github:lnl7/nix-darwin";
@@ -28,7 +28,7 @@
   };
 
   # add the inputs declared above to the argument attribute set
-  outputs = inputs @ { self, nixpkgs, unstable, tweag, home-manager, darwin, flake-utils, ... }:
+  outputs = inputs @ { self, nixpkgs, unstable, nickel, home-manager, darwin, flake-utils, ... }:
 
     let
       darwinSystem = system: extraModules: hostName:
