@@ -27,47 +27,38 @@
   # add the inputs declared above to the argument attribute set
   outputs = inputs @ { self, nixpkgs, unstable, home-manager, darwin, flake-utils, ... }:
 
-    flake-utils.lib.eachSystem [ "aarch64-darwin" "x86_64-linux" ]
-      (
-        system:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-          };
-        in
-        {
-          formatter = pkgs.nixpkgs-fmt;
-        }
-      ) // {
-
-      darwinConfigurations."bitso-mba" =
-        let
-          arch = "aarch64-darwin";
-        in
+    let
+      darwinSystem = system: extraModules: hostName:
         darwin.lib.darwinSystem {
-          inputs = inputs // { inherit arch; };
-          system = arch;
+          inputs = inputs // { arch = system; username = "robharrop"; };
+          inherit system;
           modules = [
             home-manager.darwinModules.home-manager
-            ./hosts/vetinari/default.nix
-          ];
+            ./common/darwin.nix
+            ./hosts/${hostName}/default.nix
+          ] ++ extraModules;
         };
 
-      darwinConfigurations."vetinari" =
-        let
-          arch = "aarch64-darwin";
-        in
-        darwin.lib.darwinSystem {
 
-          inputs = inputs // { inherit arch; };
+      processConfigurations = builtins.mapAttrs (n: v: v n);
 
-          system = arch;
-          modules = [
-            home-manager.darwinModules.home-manager
-            ./hosts/vetinari/default.nix
-          ];
+    in
+    {
+      darwinConfigurations = processConfigurations {
+        bitso-mba = darwinSystem "aarch64-darwin" [ ./common/bitso.nix ];
+        vetinari = darwinSystem "aarch64-darwin" [ ./common/personal.nix ];
+      };
+
+    } // flake-utils.lib.eachSystem [ "aarch64-darwin" ] (system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
         };
-    };
+      in
+      {
+        formatter = pkgs.nixpkgs-fmt;
+      }
+    );
 
 
 }
