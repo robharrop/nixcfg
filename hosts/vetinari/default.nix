@@ -40,6 +40,7 @@ in
   system.defaults = {
     dock = {
       autohide = true;
+      static-only = true;
 
       # lock screen in top left corner
       wvous-tl-corner = 5;
