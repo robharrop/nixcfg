@@ -40,6 +40,19 @@
         }
       ) // {
 
+      darwinConfigurations."bitso-mba" =
+        let
+          arch = "aarch64-darwin";
+        in
+        darwin.lib.darwinSystem {
+          inputs = inputs // { inherit arch; };
+          system = arch;
+          modules = [
+            home-manager.darwinModules.home-manager
+            ./hosts/vetinari/default.nix
+          ];
+        };
+
       darwinConfigurations."vetinari" =
         let
           arch = "aarch64-darwin";
