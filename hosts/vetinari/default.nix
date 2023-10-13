@@ -43,7 +43,7 @@ in
       static-only = true;
 
       # lock screen in top left corner
-      wvous-tl-corner = 5;
+      wvous-tl-corner = 13;
     };
 
     screensaver = {
