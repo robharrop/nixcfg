@@ -11,6 +11,7 @@ in
       casks = [
         "chromium"
         "1password"
+        "rancher"
       ];
     };
 
