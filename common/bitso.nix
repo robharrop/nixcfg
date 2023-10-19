@@ -31,6 +31,9 @@ in
         phoenixframework.phoenix
       ]);
       userSettings = {
+        # 00
+        "editor.fontFamily" = "JetBrainsMono Nerd Font";
+        "editor.fontSize" = 14;
         "workbench.colorTheme" = "Dracula";
       };
     };
