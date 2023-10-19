@@ -12,6 +12,7 @@ in
         "chromium"
         "1password"
         "rancher"
+        "superhuman"
       ];
     };
 
