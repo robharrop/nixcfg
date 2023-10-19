@@ -35,7 +35,14 @@ in
       };
     };
 
-    programs.git.userEmail = "rob@bitso.com";
+    programs.git = {
+      userEmail = "rob@bitso.com";
+
+      signing = {
+        key = "ACC3A3D8FD118EFB";
+        signByDefault = true;
+      };
+    };
 
   };
 }

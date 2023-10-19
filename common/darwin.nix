@@ -150,6 +150,10 @@ in
       enableAutosuggestions = true;
       enableSyntaxHighlighting = true;
 
+      initExtra = ''
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      '';
+
       shellAliases = {
         ga = "git add";
         gc = "git commit";
