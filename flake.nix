@@ -45,7 +45,7 @@
     in
     {
       darwinConfigurations = processConfigurations {
-        bitso-mba = darwinSystem "aarch64-darwin" [ ./common/bitso.nix ];
+        BTSWS0DJQ6LX = darwinSystem "aarch64-darwin" [ ./common/bitso.nix ];
         vetinari = darwinSystem "aarch64-darwin" [ ./common/personal.nix ];
       };
 

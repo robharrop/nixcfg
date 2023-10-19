@@ -86,6 +86,7 @@ in
 
     home.packages = with pkgs; [
       bitwarden-cli
+      gh 
       htop
       jq
     ];
@@ -103,7 +104,8 @@ in
     };
 
     programs.gh = {
-      enable = true;
+      # see https://github.com/nix-community/home-manager/issues/3401
+      enable = false;
     };
 
     programs.git = {
