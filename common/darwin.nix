@@ -70,6 +70,7 @@ in
     casks = [
       "bitwarden"
       "firefox"
+      "logseq"
       "whatsapp"
     ];
 
@@ -88,6 +89,7 @@ in
       bitwarden-cli
       gh 
       htop
+      jetbrains.idea-community
       jq
     ];
 

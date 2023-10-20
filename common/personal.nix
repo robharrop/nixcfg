@@ -8,6 +8,7 @@ in
   homebrew = {
     casks = [
       "epic-games"
+      "logseq"
       "steam"
     ];
   };
