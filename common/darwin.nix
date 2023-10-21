@@ -50,7 +50,12 @@ in
     };
 
     # use standard function keys
-    NSGlobalDomain."com.apple.keyboard.fnState" = true;
+    NSGlobalDomain = {
+      "com.apple.keyboard.fnState" = true;
+
+      ApplePressAndHoldEnabled = false;
+      KeyRepeat = 0;
+    };
   };
 
   system.keyboard = {
@@ -89,9 +94,10 @@ in
       bitwarden-cli
       gh 
       htop
-      jetbrains.idea-community
       jq
-    ];
+    ] ++ (with unstable; [
+      jetbrains.idea-community
+    ]);
 
     programs.home-manager.enable = true;
 
