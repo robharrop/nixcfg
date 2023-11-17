@@ -27,7 +27,7 @@ in
       mas
       vim
       obsidian
-    ] ++ [ unstable.raycast
+    ] ++ [
      nickel.nickel-lang-cli ];
 
   fonts.fontDir.enable = true;
@@ -78,6 +78,7 @@ in
       "1password"
       "whatsapp"
       "chromium"
+      "raycast"
       "steam"
       "epic-games"
     ];
