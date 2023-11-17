@@ -7,6 +7,8 @@ let
     system = inputs.arch;
     config.allowUnfree = true;
   };
+
+  nickel = inputs.nickel.packages.${inputs.arch};
 in
 {
 
@@ -25,7 +27,8 @@ in
       mas
       vim
       obsidian
-    ] ++ [ unstable.raycast ];
+    ] ++ [ unstable.raycast
+     nickel.nickel-lang-cli ];
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
