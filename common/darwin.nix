@@ -23,7 +23,7 @@ in
       emacs
       mas
       vim
-    ] ++ [ unstable.raycast ];
+    ] ++ [ ];
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
@@ -71,6 +71,7 @@ in
       "bitwarden"
       "firefox"
       "logseq"
+      "raycast"
       "whatsapp"
     ];
 
@@ -114,6 +115,10 @@ in
       enable = true;
 
       userName = "Rob Harrop";
+
+      extraConfig = {
+        pull.rebase = "true";
+      };
     };
 
     programs.kitty = {
