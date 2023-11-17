@@ -120,6 +120,10 @@ in
 
       userName = "Rob Harrop";
       userEmail = "rob@robharrop.dev";
+
+      extraConfig = {
+        pull.rebase = "true";
+      };
     };
 
     programs.kitty = {
@@ -178,6 +182,7 @@ in
       shellAliases = {
         ga = "git add";
         gc = "git commit";
+        gl = "git pull";
         gp = "git push";
         gco = "git checkout";
         gst = "git status";
