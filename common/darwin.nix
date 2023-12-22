@@ -6,6 +6,8 @@ let
     system = inputs.arch;
     config.allowUnfree = true;
   };
+
+  vscode-marketplace = inputs.nix-vscode-extensions.extensions.${inputs.arch}.vscode-marketplace;
 in
 {
 
@@ -23,7 +25,7 @@ in
       emacs
       mas
       vim
-    ] ++ [ unstable.raycast ];
+    ] ++ [ ];
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
@@ -76,6 +78,7 @@ in
       "bitwarden"
       "firefox"
       "logseq"
+      "raycast"
       "whatsapp"
     ];
 
@@ -92,7 +95,7 @@ in
 
     home.packages = with pkgs; [
       bitwarden-cli
-      gh 
+      gh
       htop
       jq
     ] ++ (with unstable; [
@@ -120,6 +123,10 @@ in
       enable = true;
 
       userName = "Rob Harrop";
+
+      extraConfig = {
+        pull.rebase = "true";
+      };
     };
 
     programs.kitty = {
@@ -153,6 +160,26 @@ in
       enable = true;
     };
 
+    programs.vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+        dracula-theme.theme-dracula
+        vscodevim.vim
+      ] ++ (with vscode-marketplace; [
+        golang.go
+        jakebecker.elixir-ls
+        jamesottaway.nix-develop
+        phoenixframework.phoenix
+      ]);
+      userSettings = {
+        # 00
+        "editor.fontFamily" = "JetBrainsMono Nerd Font";
+        "editor.fontSize" = 14;
+        "workbench.colorTheme" = "Dracula";
+      };
+    };
+
     programs.zsh = {
       enable = true;
       enableAutosuggestions = true;
@@ -165,6 +192,7 @@ in
       shellAliases = {
         ga = "git add";
         gc = "git commit";
+        gl = "git pull";
         gp = "git push";
         gco = "git checkout";
         gst = "git status";
