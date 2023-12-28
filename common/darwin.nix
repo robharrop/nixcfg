@@ -76,6 +76,7 @@ in
 
     casks = [
       "bitwarden"
+      "cameracontroller"
       "firefox"
       "logseq"
       "raycast"
