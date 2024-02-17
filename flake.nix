@@ -12,7 +12,7 @@
     nickel.inputs.nixpkgs.follows = "nixpkgs";
 
     # nix will normally use the nixpkgs defined in home-managers inputs, we only want one copy of nixpkgs though
-    darwin.url = "github:lnl7/nix-darwin";
+    darwin.url = "github:robharrop/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
