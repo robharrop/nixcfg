@@ -80,6 +80,7 @@ in
       "firefox"
       "logseq"
       "raycast"
+      "rstudio"
       "whatsapp"
     ];
 
