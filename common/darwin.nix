@@ -57,6 +57,10 @@ in
 
       ApplePressAndHoldEnabled = false;
       KeyRepeat = 0;
+
+      # menu bar item spacing
+      NSStatusItemSelectionPadding = 8;
+      NSStatusItemSpacing = 12;
     };
   };
 
