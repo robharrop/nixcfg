@@ -5,10 +5,19 @@ let
 in
 {
 
+  environment.systemPackages = [
+    pkgs.colima
+    pkgs.docker
+    pkgs.packer
+  ];
+
   homebrew = {
     casks = [
       "epic-games"
       "steam"
+      "vagrant"
+      "vagrant-vmware-utility"
+      "vmware-fusion"
     ];
   };
 

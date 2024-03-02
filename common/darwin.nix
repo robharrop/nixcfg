@@ -56,7 +56,8 @@ in
       "com.apple.keyboard.fnState" = true;
 
       ApplePressAndHoldEnabled = false;
-      KeyRepeat = 0;
+      InitialKeyRepeat = 10;
+      KeyRepeat = 1;
 
       # menu bar item spacing
       NSStatusItemSelectionPadding = 8;
