@@ -84,6 +84,7 @@ in
       "cameracontroller"
       "firefox"
       "logseq"
+      "r"
       "raycast"
       "rstudio"
       "whatsapp"
