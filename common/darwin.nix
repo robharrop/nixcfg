@@ -89,6 +89,7 @@ in
       "ledger-live"
       "logitech-options"
       "logseq"
+      "mullvadvpn"
       "r"
       "raycast"
       "remarkable"
