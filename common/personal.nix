@@ -19,6 +19,10 @@ in
       "vagrant-vmware-utility"
       "vmware-fusion"
     ];
+
+    masApps = {
+      "iA Writer" = 775737590;
+    };
   };
 
   home-manager.users.${username} = { pkgs, ... }: {
