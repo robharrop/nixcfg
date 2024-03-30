@@ -23,6 +23,7 @@ in
   environment.systemPackages =
     with pkgs;[
       emacs
+      helix
       mas
       vim
     ] ++ [ ];
