@@ -81,11 +81,17 @@ in
 
     casks = [
       "bitwarden"
+      "calibre"
       "cameracontroller"
+      "google-chrome"
       "firefox"
+      "kindle"
+      "ledger-live"
+      "logitech-options"
       "logseq"
       "r"
       "raycast"
+      "remarkable"
       "rstudio"
       "whatsapp"
     ];
