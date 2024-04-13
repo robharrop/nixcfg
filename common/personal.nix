@@ -14,6 +14,7 @@ in
   homebrew = {
     casks = [
       "epic-games"
+      "setapp"
       "steam"
       "vagrant"
       "vagrant-vmware-utility"

@@ -92,6 +92,7 @@ in
       "logseq"
       "mullvadvpn"
       "r"
+      "raspberry-pi-imager"
       "raycast"
       "remarkable"
       "rstudio"
