@@ -9,8 +9,11 @@ in
     {
       casks = [
         "chromium"
+	"gpg-suite"
         "1password"
+	"microsoft-teams"
         "rancher"
+	"slack"
         "superhuman"
       ];
     };
