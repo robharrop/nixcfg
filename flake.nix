@@ -49,7 +49,7 @@
     {
       darwinConfigurations = processConfigurations {
         BTSWS0DJQ6LX = darwinSystem "aarch64-darwin" [ ./common/bitso.nix ];
-        Robs-Laptop  = darwinSystem "aarch64-darwin" [ ./common/bitso.nix ];
+        BTSWS2FPX1L6L= darwinSystem "aarch64-darwin" [ ./common/bitso.nix ];
         vetinari = darwinSystem "aarch64-darwin" [ ./common/personal.nix ];
       };
 
