@@ -5,15 +5,23 @@ let
 in
 {
 
+  environment.systemPackages =
+    with pkgs;[
+      awscli2
+      postgresql_15
+    ];
+
   homebrew =
     {
       casks = [
-        "chromium"
-	"gpg-suite"
         "1password"
-	"microsoft-teams"
+        "1password-cli"
+        "chromium"
+        "gpg-suite"
+        "microsoft-teams"
         "rancher"
-	"slack"
+        "sdm"
+        "slack"
         "superhuman"
       ];
     };
