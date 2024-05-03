@@ -14,6 +14,7 @@ in
   homebrew = {
     casks = [
       "epic-games"
+      "moonlight"
       "setapp"
       "steam"
       "vagrant"
