@@ -98,6 +98,7 @@ in
       "remarkable"
       "rstudio"
       "whatsapp"
+      "zotero"
     ];
 
     masApps = {
