@@ -25,6 +25,7 @@ in
       emacs
       helix
       mas
+      ripgrep
       vim
     ] ++ [ ];
 
