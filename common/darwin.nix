@@ -27,7 +27,9 @@ in
       mas
       ripgrep
       vim
-    ] ++ [ ];
+    ] ++ [
+      unstable.go
+    ];
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
