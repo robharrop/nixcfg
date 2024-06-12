@@ -188,6 +188,8 @@ in
         dracula-theme.theme-dracula
         vscodevim.vim
       ] ++ (with vscode-marketplace; [
+        github.copilot
+        github.copilot-chat
         golang.go
         jakebecker.elixir-ls
         jamesottaway.nix-develop
