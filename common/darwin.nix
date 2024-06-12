@@ -125,9 +125,9 @@ in
 
     programs.home-manager.enable = true;
 
-    programs.exa = {
+    programs.eza = {
       enable = true;
-      enableAliases = true;
+      enableZshIntegration = true;
     };
 
     programs.fzf = {
@@ -205,8 +205,10 @@ in
 
     programs.zsh = {
       enable = true;
-      enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
+
+      autosuggestion = {
+        enable = true;
+      };
 
       initExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -220,6 +222,10 @@ in
         gco = "git checkout";
         gst = "git status";
 
+      };
+
+      syntaxHighlighting = {
+        enable = true;
       };
     };
   };
