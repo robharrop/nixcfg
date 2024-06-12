@@ -15,6 +15,7 @@ in
     casks = [
       "epic-games"
       "moonlight"
+      "retroarch"
       "setapp"
       "steam"
       "vagrant"
