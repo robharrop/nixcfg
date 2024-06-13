@@ -99,6 +99,7 @@ in
       "raycast"
       "remarkable"
       "rstudio"
+      "shortcat"
       "whatsapp"
       "zotero"
     ];
