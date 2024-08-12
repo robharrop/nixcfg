@@ -194,6 +194,7 @@ in
         golang.go
         jakebecker.elixir-ls
         jamesottaway.nix-develop
+        nomicfoundation.hardhat-solidity
         phoenixframework.phoenix
       ]);
       userSettings = {
