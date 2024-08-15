@@ -25,6 +25,11 @@
       url = "github:reckenrode/mkAlias";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    cloudflare-cert = {
+      url = "https://developers.cloudflare.com/cloudflare-one/static/Cloudflare_CA.pem";
+      flake = false;
+    };
   };
 
   # add the inputs declared above to the argument attribute set

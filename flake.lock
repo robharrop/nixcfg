@@ -16,6 +16,18 @@
         "type": "github"
       }
     },
+    "cloudflare-cert": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-tBNebpoXu+U6iYVXFAdkKUXUw2Vhv5ny1c23aQrDIHQ=",
+        "type": "file",
+        "url": "https://developers.cloudflare.com/cloudflare-one/static/Cloudflare_CA.pem"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://developers.cloudflare.com/cloudflare-one/static/Cloudflare_CA.pem"
+      }
+    },
     "crane": {
       "inputs": {
         "nixpkgs": [
@@ -445,6 +457,7 @@
     },
     "root": {
       "inputs": {
+        "cloudflare-cert": "cloudflare-cert",
         "darwin": "darwin",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
