@@ -197,6 +197,7 @@ in
         nomicfoundation.hardhat-solidity
         phoenixframework.phoenix
       ]);
+      mutableExtensionsDir = true;
       userSettings = {
         # 00
         "editor.fontFamily" = "JetBrainsMono Nerd Font";
