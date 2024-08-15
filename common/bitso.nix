@@ -37,11 +37,11 @@ in
       };
     };
 
-    home.sessionVariables = {
-      # This is crappy and should be variable
-      AWS_CA_BUNDLE = "/etc/ssl/certs/ca-certificates.crt";
+    programs.zsh = {
+      initExtra = ''
+        export AWS_CA_BUNDLE="$NIX_SSL_CERT_FILE"
+      '';
     };
-
   };
 
   security.pki.certificateFiles = [
