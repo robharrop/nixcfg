@@ -7,7 +7,6 @@ let
     config.allowUnfree = true;
   };
 
-  vscode-marketplace = inputs.nix-vscode-extensions.extensions.${inputs.arch}.vscode-marketplace;
 
 in
 {
@@ -97,29 +96,7 @@ in
       enable = true;
     };
 
-    programs.vscode = {
-      enable = true;
-      extensions = with pkgs.vscode-extensions; [
-        bbenoist.nix
-        dracula-theme.theme-dracula
-        vscodevim.vim
-      ] ++ (with vscode-marketplace; [
-        github.copilot
-        github.copilot-chat
-        golang.go
-        jakebecker.elixir-ls
-        jamesottaway.nix-develop
-        nomicfoundation.hardhat-solidity
-        phoenixframework.phoenix
-      ]);
-      mutableExtensionsDir = true;
-      userSettings = {
-        # 00
-        "editor.fontFamily" = "JetBrainsMono Nerd Font";
-        "editor.fontSize" = 14;
-        "workbench.colorTheme" = "Dracula";
-      };
-    };
+    programs.vscode = import ./home/vscode.nix { inherit pkgs; inherit inputs; };
 
     programs.zsh = {
       enable = true;
