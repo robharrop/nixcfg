@@ -125,6 +125,9 @@ in
     };
   };
 
+  # allow TouchID to authorize sudo
+  security.pam.enableSudoTouchIdAuth = true;
+
   users.users.${username} = {
     name = username;
     home = "/Users/${username}";
