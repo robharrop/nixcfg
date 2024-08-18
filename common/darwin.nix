@@ -47,7 +47,6 @@ in
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
-
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = false;
   home-manager.users.robharrop = { pkgs, ... }: {

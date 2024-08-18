@@ -21,11 +21,6 @@
       url = "github:numtide/flake-utils";
     };
 
-    mkAlias = {
-      url = "github:reckenrode/mkAlias";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     cloudflare-cert = {
       url = "https://developers.cloudflare.com/cloudflare-one/static/Cloudflare_CA.pem";
       flake = false;
