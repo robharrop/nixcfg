@@ -8,8 +8,11 @@ let
   };
 
   vscode-marketplace = inputs.nix-vscode-extensions.extensions.${inputs.arch}.vscode-marketplace;
+
 in
 {
+
+  system = import ./darwin/system.nix { };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -38,42 +41,12 @@ in
 
   programs.zsh.enable = true;
 
+  services.emacs = {
+    enable = true;
+  };
+
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-
-  system.defaults = {
-    dock = {
-      autohide = true;
-      static-only = true;
-
-      # lock screen in top left corner
-      wvous-tl-corner = 13;
-    };
-
-    screensaver = {
-      askForPassword = true;
-      askForPasswordDelay = 5;
-    };
-
-    # use standard function keys
-    NSGlobalDomain = {
-      "com.apple.keyboard.fnState" = true;
-
-      ApplePressAndHoldEnabled = false;
-      InitialKeyRepeat = 10;
-      KeyRepeat = 1;
-
-      # menu bar item spacing
-      NSStatusItemSelectionPadding = 8;
-      NSStatusItemSpacing = 12;
-    };
-  };
-
-  system.keyboard = {
-    enableKeyMapping = true;
-    remapCapsLockToControl = true;
-  };
-
 
   homebrew = {
     enable = true;
@@ -237,7 +210,5 @@ in
     name = username;
     home = "/Users/${username}";
   };
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+
 }
