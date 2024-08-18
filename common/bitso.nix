@@ -11,20 +11,19 @@ in
       postgresql_15
     ];
 
-  homebrew =
-    {
-      casks = [
-        "1password"
-        "1password-cli"
-        "chromium"
-        "gpg-suite"
-        "microsoft-teams"
-        "rancher"
-        "sdm"
-        "slack"
-        "superhuman"
-      ];
-    };
+  homebrew = import ./darwin/homebrew.nix {
+    extraCasks = [
+      "1password"
+      "1password-cli"
+      "chromium"
+      "gpg-suite"
+      "microsoft-teams"
+      "rancher"
+      "sdm"
+      "slack"
+      "superhuman"
+    ];
+  };
 
   home-manager.users.${username} = { pkgs, ... }: {
 

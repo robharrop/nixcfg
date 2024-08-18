@@ -1,4 +1,4 @@
-{ ... }: {
+{ extraCasks ? [ ], ... }: {
   enable = true;
 
   onActivation = {
@@ -25,9 +25,10 @@
     "shortcat"
     "whatsapp"
     "zotero"
-  ];
+  ] ++ extraCasks;
 
   masApps = {
     "Todoist: To-Do List & Tasks" = 585829637;
+    "iA Writer" = 775737590;
   };
 }

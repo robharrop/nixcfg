@@ -11,8 +11,8 @@ in
     pkgs.packer
   ];
 
-  homebrew = {
-    casks = [
+  homebrew = import ./darwin/homebrew.nix {
+    extraCasks = [
       "epic-games"
       "moonlight"
       "retroarch"
@@ -22,10 +22,6 @@ in
       "vagrant-vmware-utility"
       "vmware-fusion"
     ];
-
-    masApps = {
-      "iA Writer" = 775737590;
-    };
   };
 
   home-manager.users.${username} = { pkgs, ... }: {
