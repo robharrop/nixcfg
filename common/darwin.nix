@@ -12,6 +12,7 @@ let
 in
 {
 
+  homebrew = import ./darwin/homebrew.nix { };
   system = import ./darwin/system.nix { };
 
   nixpkgs.config.allowUnfree = true;
@@ -48,39 +49,6 @@ in
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
-  homebrew = {
-    enable = true;
-
-    onActivation = {
-      autoUpdate = true;
-      cleanup = "uninstall";
-    };
-
-    casks = [
-      "bitwarden"
-      "calibre"
-      "cameracontroller"
-      "google-chrome"
-      "firefox"
-      "kindle"
-      "ledger-live"
-      "logitech-options"
-      "logseq"
-      "mullvadvpn"
-      "r"
-      "raspberry-pi-imager"
-      "raycast"
-      "remarkable"
-      "rstudio"
-      "shortcat"
-      "whatsapp"
-      "zotero"
-    ];
-
-    masApps = {
-      "Todoist: To-Do List & Tasks" = 585829637;
-    };
-  };
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = false;
