@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   enable = true;
   environment = {
     "LS_COLORS" = "1";

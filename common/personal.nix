@@ -1,4 +1,11 @@
-{ config, pkgs, lib, inputs, home-manager, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  home-manager,
+  ...
+}:
 
 let
   username = inputs.username;
@@ -24,7 +31,9 @@ in
     ];
   };
 
-  home-manager.users.${username} = { pkgs, ... }: {
-    programs.git.userEmail = "rob@robharrop.dev";
-  };
+  home-manager.users.${username} =
+    { pkgs, ... }:
+    {
+      programs.git.userEmail = "rob@robharrop.dev";
+    };
 }

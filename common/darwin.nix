@@ -1,4 +1,11 @@
-{ config, pkgs, lib, inputs, home-manager, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  home-manager,
+  ...
+}:
 
 let
   username = inputs.username;
@@ -6,7 +13,6 @@ let
     system = inputs.arch;
     config.allowUnfree = true;
   };
-
 
 in
 {
@@ -23,16 +29,16 @@ in
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
-    with pkgs;[
+    with pkgs;
+    [
       emacs
       helix
       mas
-      nixfmt
+      nixfmt-rfc-style
       ripgrep
       vim
-    ] ++ [
-      unstable.go
-    ];
+    ]
+    ++ [ unstable.go ];
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
@@ -51,94 +57,98 @@ in
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = false;
-  home-manager.users.robharrop = { pkgs, ... }: {
+  home-manager.users.robharrop =
+    { pkgs, ... }:
+    {
 
-    home.stateVersion = "23.05";
+      home.stateVersion = "23.05";
 
-    home.packages = with pkgs; [
-      bitwarden-cli
-      gh
-      htop
-      jq
-    ] ++ (with unstable; [
-      jetbrains.idea-community
-    ]);
+      home.packages =
+        with pkgs;
+        [
+          bitwarden-cli
+          gh
+          htop
+          jq
+        ]
+        ++ (with unstable; [ jetbrains.idea-community ]);
 
-    programs.home-manager.enable = true;
+      programs.home-manager.enable = true;
 
-    programs.eza = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
-    programs.fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
-    programs.gh = {
-      # see https://github.com/nix-community/home-manager/issues/3401
-      enable = false;
-    };
-
-    programs.git = {
-      enable = true;
-
-      userName = "Rob Harrop";
-
-      extraConfig = {
-        pull.rebase = "true";
+      programs.eza = {
+        enable = true;
+        enableZshIntegration = true;
       };
-    };
 
-    programs.kitty = import ./home/kitty.nix { };
+      programs.fzf = {
+        enable = true;
+        enableZshIntegration = true;
+      };
 
-    programs.neovim = {
-      enable = true;
+      programs.gh = {
+        # see https://github.com/nix-community/home-manager/issues/3401
+        enable = false;
+      };
 
-      plugins = with pkgs.vimPlugins; [
-        gruvbox
-      ];
+      programs.git = {
+        enable = true;
 
-      extraConfig = ''
-        colorscheme gruvbox
-      '';
+        userName = "Rob Harrop";
 
-      vimAlias = true;
-    };
+        extraConfig = {
+          pull.rebase = "true";
+        };
+      };
 
-    programs.starship = {
-      enable = true;
-    };
+      programs.kitty = import ./home/kitty.nix { };
 
-    programs.vscode = import ./home/vscode.nix { inherit pkgs; inherit inputs; };
+      programs.neovim = {
+        enable = true;
 
-    programs.zsh = {
-      enable = true;
+        plugins = with pkgs.vimPlugins; [ gruvbox ];
 
-      autosuggestion = {
+        extraConfig = ''
+          colorscheme gruvbox
+        '';
+
+        vimAlias = true;
+      };
+
+      programs.starship = {
         enable = true;
       };
 
-      initExtra = ''
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-      '';
-
-      shellAliases = {
-        ga = "git add";
-        gc = "git commit";
-        gl = "git pull";
-        gp = "git push";
-        gco = "git checkout";
-        gst = "git status";
-
+      programs.vscode = import ./home/vscode.nix {
+        inherit pkgs;
+        inherit inputs;
       };
 
-      syntaxHighlighting = {
+      programs.zsh = {
         enable = true;
+
+        autosuggestion = {
+          enable = true;
+        };
+
+        initExtra = ''
+          eval "$(/opt/homebrew/bin/brew shellenv)"
+        '';
+
+        shellAliases = {
+          ga = "git add";
+          gc = "git commit";
+          gl = "git pull";
+          gp = "git push";
+          gco = "git checkout";
+          gst = "git status";
+
+        };
+
+        syntaxHighlighting = {
+          enable = true;
+        };
       };
     };
-  };
 
   # allow TouchID to authorize sudo
   security.pam.enableSudoTouchIdAuth = true;

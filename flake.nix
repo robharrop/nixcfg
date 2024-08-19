@@ -28,12 +28,26 @@
   };
 
   # add the inputs declared above to the argument attribute set
-  outputs = inputs @ { self, nixpkgs, unstable, nickel, home-manager, darwin, flake-utils, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      unstable,
+      nickel,
+      home-manager,
+      darwin,
+      flake-utils,
+      ...
+    }:
 
     let
-      darwinSystem = system: extraModules: hostName:
+      darwinSystem =
+        system: extraModules: hostName:
         darwin.lib.darwinSystem {
-          inputs = inputs // { arch = system; username = "robharrop"; };
+          inputs = inputs // {
+            arch = system;
+            username = "robharrop";
+          };
           inherit system;
           modules = [
             home-manager.darwinModules.home-manager
@@ -41,7 +55,6 @@
             ./hosts/${hostName}/default.nix
           ] ++ extraModules;
         };
-
 
       processConfigurations = builtins.mapAttrs (n: v: v n);
 
@@ -53,16 +66,15 @@
         vetinari = darwinSystem "aarch64-darwin" [ ./common/personal.nix ];
       };
 
-    } // flake-utils.lib.eachSystem [ "aarch64-darwin" ] (system:
+    }
+    // flake-utils.lib.eachSystem [ "aarch64-darwin" ] (
+      system:
       let
-        pkgs = import nixpkgs {
-          inherit system;
-        };
+        pkgs = import nixpkgs { inherit system; };
       in
       {
-        formatter = pkgs.nixpkgs-fmt;
+        formatter = pkgs.nixfmt-rfc-style;
       }
     );
-
 
 }

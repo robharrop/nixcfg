@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   defaults = {
     dock = {
       autohide = true;

@@ -1,4 +1,8 @@
-{ extraCasks ? [ ], ... }: {
+{
+  extraCasks ? [ ],
+  ...
+}:
+{
   enable = true;
 
   onActivation = {

@@ -5,19 +5,22 @@ let
 in
 {
   enable = true;
-  extensions = with pkgs.vscode-extensions; [
-    bbenoist.nix
-    dracula-theme.theme-dracula
-    vscodevim.vim
-  ] ++ (with vscode-marketplace; [
-    github.copilot
-    github.copilot-chat
-    golang.go
-    jakebecker.elixir-ls
-    jamesottaway.nix-develop
-    nomicfoundation.hardhat-solidity
-    phoenixframework.phoenix
-  ]);
+  extensions =
+    with pkgs.vscode-extensions;
+    [
+      bbenoist.nix
+      dracula-theme.theme-dracula
+      vscodevim.vim
+    ]
+    ++ (with vscode-marketplace; [
+      github.copilot
+      github.copilot-chat
+      golang.go
+      jakebecker.elixir-ls
+      jamesottaway.nix-develop
+      nomicfoundation.hardhat-solidity
+      phoenixframework.phoenix
+    ]);
   mutableExtensionsDir = true;
   userSettings = {
     # 00
