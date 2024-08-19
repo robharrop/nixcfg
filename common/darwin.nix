@@ -27,6 +27,7 @@ in
       emacs
       helix
       mas
+      nixfmt
       ripgrep
       vim
     ] ++ [
@@ -91,6 +92,20 @@ in
     };
 
     programs.kitty = import ./home/kitty.nix { };
+
+    programs.neovim = {
+      enable = true;
+
+      plugins = with pkgs.vimPlugins; [
+        gruvbox
+      ];
+
+      extraConfig = ''
+        colorscheme gruvbox
+      '';
+
+      vimAlias = true;
+    };
 
     programs.starship = {
       enable = true;
