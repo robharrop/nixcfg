@@ -46,6 +46,8 @@ in
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
+  programs.nixvim = import ./vim {};
+
   programs.zsh.enable = true;
 
   services.emacs = {
@@ -101,18 +103,6 @@ in
       };
 
       programs.kitty = import ./home/kitty.nix { };
-
-      programs.neovim = {
-        enable = true;
-
-        plugins = with pkgs.vimPlugins; [ gruvbox ];
-
-        extraConfig = ''
-          colorscheme gruvbox
-        '';
-
-        vimAlias = true;
-      };
 
       programs.starship = {
         enable = true;

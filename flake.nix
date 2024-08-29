@@ -11,6 +11,11 @@
     nickel.url = "github:tweag/nickel";
     nickel.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nix will normally use the nixpkgs defined in home-managers inputs, we only want one copy of nixpkgs though
     darwin.url = "github:robharrop/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +40,7 @@
       unstable,
       nickel,
       home-manager,
+      nixvim,
       darwin,
       flake-utils,
       ...
@@ -51,6 +57,7 @@
           inherit system;
           modules = [
             home-manager.darwinModules.home-manager
+            nixvim.nixDarwinModules.nixvim
             ./common/darwin.nix
             ./hosts/${hostName}/default.nix
           ] ++ extraModules;
