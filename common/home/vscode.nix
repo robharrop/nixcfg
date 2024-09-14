@@ -2,6 +2,7 @@
 
 let
   vscode-marketplace = inputs.nix-vscode-extensions.extensions.${inputs.arch}.vscode-marketplace;
+  vscode-settings = import ./vscode-settings.nix;
 in
 {
   enable = true;
@@ -26,10 +27,5 @@ in
       sourcegraph.cody-ai
     ]);
   mutableExtensionsDir = true;
-  userSettings = {
-    # 00
-    "editor.fontFamily" = "JetBrainsMono Nerd Font";
-    "editor.fontSize" = 14;
-    "workbench.colorTheme" = "Dracula";
-  };
+  userSettings = vscode-settings;
 }
