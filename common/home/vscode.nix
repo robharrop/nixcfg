@@ -3,8 +3,12 @@
 let
   vscode-marketplace = inputs.nix-vscode-extensions.extensions.${inputs.arch}.vscode-marketplace;
   vscode-settings = import ./vscode-settings.nix;
+
+  keybindings = import ./vscode-keybindings.nix { };
 in
 {
+  inherit keybindings;
+
   enable = true;
   extensions =
     with pkgs.vscode-extensions;
@@ -26,6 +30,7 @@ in
       shopify.ruby-extensions-pack
       sourcegraph.cody-ai
     ]);
+
   mutableExtensionsDir = true;
   userSettings = vscode-settings;
 }
