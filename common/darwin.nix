@@ -21,10 +21,14 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  nix.extraOptions = ''
-    auto-optimise-store = false
-    experimental-features = nix-command flakes
-  '';
+  nix = {
+    extraOptions = ''
+      auto-optimise-store = false
+      experimental-features = nix-command flakes
+    '';
+
+    optimise.automatic = true;
+  };
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
