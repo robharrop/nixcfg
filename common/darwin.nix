@@ -46,7 +46,7 @@ in
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
-  programs.nixvim = import ./vim {};
+  programs.nixvim = import ./vim { };
 
   programs.zsh.enable = true;
 

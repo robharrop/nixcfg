@@ -18,8 +18,10 @@ in
       golang.go
       jakebecker.elixir-ls
       jamesottaway.nix-develop
+      ms-python.python
       nomicfoundation.hardhat-solidity
       phoenixframework.phoenix
+      rust-lang.rust-analyzer
     ]);
   mutableExtensionsDir = true;
   userSettings = {
