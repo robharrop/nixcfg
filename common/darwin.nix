@@ -22,7 +22,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   nix.extraOptions = ''
-    auto-optimise-store = true
+    auto-optimise-store = false
     experimental-features = nix-command flakes
   '';
 
@@ -40,8 +40,7 @@ in
     ]
     ++ [ unstable.go ];
 
-  fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     noto-fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
