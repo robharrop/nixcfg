@@ -22,6 +22,8 @@ in
       nomicfoundation.hardhat-solidity
       phoenixframework.phoenix
       rust-lang.rust-analyzer
+      shopify.ruby-extensions-pack
+      sourcegraph.cody-ai
     ]);
   mutableExtensionsDir = true;
   userSettings = {
