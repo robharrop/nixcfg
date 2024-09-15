@@ -17,6 +17,7 @@ in
 {
 
   imports = [
+    ./darwin/aerospace
     ./darwin/homebrew
     ./darwin/sketchybar
   ];
