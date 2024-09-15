@@ -4,7 +4,10 @@ let
 in
 {
   config = {
-    home-manager.users.${username}.xdg.configFile."sketchybar/plugins/battery.sh".source = ./plugins/battery.sh;
+    home-manager.users.${username}.xdg.configFile = {
+      "sketchybar/plugins/battery.sh".source = ./plugins/battery.sh;
+      "sketchybar/plugins/volume.sh".source = ./plugins/volume.sh;
+    };
 
     services.sketchybar = {
       config = ''
@@ -23,7 +26,7 @@ in
             icon.padding_left=5 \
             icon.padding_right=5 \
             label.font="$FONT_FACE:Medium:12.0" \
-            label.color=0xffcad3f5 \
+            label.color=0xFFF8F8F2 \
             label.y_offset=0 \
             label.padding_left=0 \
             label.padding_right=5
@@ -33,7 +36,15 @@ in
             update_freq=20 \
             script="$PLUGIN_DIR/battery.sh"
 
-            sketchybar --update
+
+        sketchybar --add item volume right \
+          --set volume \
+          icon.color=0xff8aadf4 \
+          label.drawing=true \
+          script="$PLUGIN_DIR/volume.sh" \
+          --subscribe volume volume_change
+
+        sketchybar --update
       '';
       enable = true;
     };
