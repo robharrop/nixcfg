@@ -5,13 +5,7 @@ let
 in
 {
 
-  environment.systemPackages = [
-    pkgs.colima
-    pkgs.docker
-    pkgs.packer
-  ];
-
-  homebrew = import ./darwin/homebrew.nix {
+  myConfig.homebrew = {
     extraCasks = [
       "epic-games"
       "moonlight"
@@ -23,5 +17,11 @@ in
       "vmware-fusion"
     ];
   };
+
+  environment.systemPackages = [
+    pkgs.colima
+    pkgs.docker
+    pkgs.packer
+  ];
 
 }

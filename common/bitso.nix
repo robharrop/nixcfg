@@ -12,26 +12,28 @@ let
 in
 {
 
-  myConfig.email = "rob@bitso.com";
+  myConfig = {
+    email = "rob@bitso.com";
+    homebrew = {
+      extraCasks = [
+        "1password"
+        "1password-cli"
+        "chromium"
+        "gpg-suite"
+        "microsoft-teams"
+        "rancher"
+        "sdm"
+        "slack"
+        "superhuman"
+      ];
+
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     awscli2
     postgresql_15
   ];
-
-  homebrew = import ./darwin/homebrew.nix {
-    extraCasks = [
-      "1password"
-      "1password-cli"
-      "chromium"
-      "gpg-suite"
-      "microsoft-teams"
-      "rancher"
-      "sdm"
-      "slack"
-      "superhuman"
-    ];
-  };
 
   home-manager.users.${username} =
     { pkgs, ... }:

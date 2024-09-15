@@ -16,7 +16,10 @@ let
 in
 {
 
-  imports = [ ./darwin/sketchybar ];
+  imports = [
+    ./darwin/homebrew.nix
+    ./darwin/sketchybar
+  ];
 
   system = import ./darwin/system.nix { };
 

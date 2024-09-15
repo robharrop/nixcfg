@@ -22,6 +22,20 @@
               default = "rob@robharrop.dev";
               description = "Email address for primary user account";
             };
+
+            homebrew = lib.mkOption {
+              type = lib.types.submodule {
+                options = {
+                  extraCasks = lib.mkOption {
+                    type = lib.types.listOf lib.types.str;
+                    default = [ ];
+                    description = "List of additional Homebrew casks to install";
+                  };
+                };
+              };
+              default = { };
+              description = "Homebrew configuration options";
+            };
           };
         };
         default = { };
