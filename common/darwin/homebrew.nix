@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ ... }:
 {
   homebrew = {
     enable = true;
@@ -27,7 +27,7 @@
       "shortcat"
       "whatsapp"
       "zotero"
-    ] ++ lib.lists.flatten config.myConfig.homebrew.extraCasks;
+    ];
 
     masApps = {
       "Todoist: To-Do List & Tasks" = 585829637;

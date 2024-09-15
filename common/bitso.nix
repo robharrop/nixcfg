@@ -14,20 +14,21 @@ in
 
   myConfig = {
     email = "rob@bitso.com";
-    homebrew = {
-      extraCasks = [
-        "1password"
-        "1password-cli"
-        "chromium"
-        "gpg-suite"
-        "microsoft-teams"
-        "rancher"
-        "sdm"
-        "slack"
-        "superhuman"
-      ];
+  };
 
-    };
+  homebrew = {
+    casks = [
+      "1password"
+      "1password-cli"
+      "chromium"
+      "gpg-suite"
+      "microsoft-teams"
+      "rancher"
+      "sdm"
+      "slack"
+      "superhuman"
+    ];
+
   };
 
   environment.systemPackages = with pkgs; [

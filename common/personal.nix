@@ -5,8 +5,8 @@ let
 in
 {
 
-  myConfig.homebrew = {
-    extraCasks = [
+  homebrew = {
+    casks = [
       "epic-games"
       "moonlight"
       "retroarch"
