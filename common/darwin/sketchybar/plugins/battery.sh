@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-# Battery is here bcause the ICON_COLOR doesn't play well with all background colors
+source "${HOME}/.config/sketchybar/colours.sh"
+source "${HOME}/.config/sketchybar/icons.sh"
 
 PERCENTAGE=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
 CHARGING=$(pmset -g batt | grep 'AC Power')
@@ -11,30 +12,30 @@ fi
 
 case ${PERCENTAGE} in
 [8-9][0-9] | 100)
-    ICON=""
-    ICON_COLOR=0xffa6da95
+    ICON="${BATTERY_100}"
+    ICON_COLOR="${DRACULA_PINK}"
     ;;
 7[0-9])
-    ICON=""
-    ICON_COLOR=0xffeed49f
+    ICON="${BATTERY_75}"
+    ICON_COLOR="${DRACULA_PINK}"
     ;;
 [4-6][0-9])
-    ICON=""
-    ICON_COLOR=0xfff5a97f
+    ICON="${BATTERY_50}"
+    ICON_COLOR="${DRACULA_PINK}"
     ;;
 [1-3][0-9])
-    ICON=""
-    ICON_COLOR=0xffee99a0
+    ICON="${BATTERY_25}"
+    ICON_COLOR="${DRACULA_YELLOW}"
     ;;
 [0-9])
-    ICON=""
-    ICON_COLOR=0xffed8796
+    ICON="${BATTERY_0}"
+    ICON_COLOR="${DRACULA_RED}"
     ;;
 esac
 
 if [[ $CHARGING != "" ]]; then
     ICON=""
-    ICON_COLOR=0xffeed49f
+    ICON_COLOR="${DRACULA_COMMENT}"
 fi
 
 sketchybar --set $NAME \

@@ -1,76 +1,106 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   homebrewPrefix = config.homebrew.brewPrefix;
   username = config.myConfig.username;
   pluginsDir = ./plugins;
+  itemsDir = ./items;
 in
 {
   config = {
-    home-manager.users.${username}.xdg.configFile = lib.mapAttrs' (
-      name: _: lib.nameValuePair "sketchybar/plugins/${name}" { source = "${pluginsDir}/${name}"; }
-    ) (builtins.readDir pluginsDir);
+    homebrew = {
+      brews = [ "switchaudio-osx" ];
+      casks = [ "sf-symbols" ];
+    };
+
+    home-manager.users.${username}.xdg.configFile =
+      lib.mapAttrs' (
+        name: _: lib.nameValuePair "sketchybar/plugins/${name}" { source = "${pluginsDir}/${name}"; }
+      ) (builtins.readDir pluginsDir)
+      // lib.mapAttrs' (
+        name: _: lib.nameValuePair "sketchybar/items/${name}" { source = "${itemsDir}/${name}"; }
+      ) (builtins.readDir itemsDir)
+      // {
+        "sketchybar/colours.sh" = {
+          source = ./colours.sh;
+        };
+        "sketchybar/icons.sh" = {
+          source = ./icons.sh;
+        };
+      };
 
     services.sketchybar = {
+      # read config from file
       config = ''
-        FONT_FACE="JetBrainsMono Nerd Font"
+        #!/usr/bin/env bash
 
-        PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+        source "''${HOME}/.config/sketchybar/colours.sh" 
+        source "''${HOME}/.config/sketchybar/icons.sh" 
 
-        sketchybar --bar position=top height=40 blur_radius=0 color=0xFF282A36
+        FONT="JetBrainsMono Nerd Font"
+        PADDING="0"
 
-        sketchybar --default \
-            background.color=0xFF282A36 \
-            background.corner_radius=0 \
-            background.padding_right=0 \
-            background.height=26 \
-            icon.font="$FONT_FACE:Medium:15.0" \
-            icon.padding_left=5 \
-            icon.padding_right=5 \
-            label.font="$FONT_FACE:Medium:12.0" \
-            label.color=0xFFF8F8F2 \
-            label.y_offset=0 \
-            label.padding_left=0 \
-            label.padding_right=5
+        ITEM_DIR="''${HOME}/.config/sketchybar/items" # Directory where the items are configured
+        PLUGIN_DIR="''${HOME}/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
 
-        sketchybar --add item battery right \
-            --set battery \
-            update_freq=20 \
-            script="$PLUGIN_DIR/battery.sh"
+        # Setting up the general bar appearance of the bar
+        bar=(
+          height=36
+          color=$DRACULA_BACKGROUND
+          shadow=off
+          position=top
+          sticky=on
+          padding_right=10
+          padding_left=10
+          corner_radius=0
+          y_offset=0
+          margin=0
+          blur_radius=0
+          notch_width=188
+        )
 
+        sketchybar --bar "''${bar[@]}"
 
-        sketchybar --add item volume right \
-          --set volume \
-          icon.color=0xff8aadf4 \
-          label.drawing=true \
-          script="$PLUGIN_DIR/volume.sh" \
-          --subscribe volume volume_change
+        # Item defaults
+        defaults=(
+          y_offset=5
+          updates=on
+          icon.font="$FONT:Bold:14.0"
+          icon.color=$DRACULA_FOREGROUND
+          icon.padding_left=$PADDING
+          icon.padding_right=$PADDING
+          label.font="$FONT:Semibold:13.0"
+          label.color=$DRACULA_FOREGROUND
+          label.padding_left=$PADDING
+          label.padding_right=$PADDING
+          padding_right=$PADDING
+          padding_left=$PADDING
+          background.corner_radius=0
+          popup.background.border_width=2
+          popup.background.corner_radius=9
+          popup.background.border_color=$DRACULA_FOREGROUND
+          popup.background.color=$DRACULA_BACKGROUND
+          popup.blur_radius=20
+          popup.background.shadow.drawing=on
+          slider.knob.font="$FONT:Bold:14.0"
+        )
 
-        sketchybar --add item clock right \
-          --set clock \
-          icon=󰃰 \
-          icon.color=0xffed8796 \
-          update_freq=10 \
-          script="$PLUGIN_DIR/clock.sh"
+        sketchybar --default "''${defaults[@]}"
 
-        # Aerospace setup
-        sketchybar --add event aerospace_workspace_change
-
-        for sid in $(seq 0 9); do
-        sketchybar --add item space.$sid left \
-            --subscribe space.$sid aerospace_workspace_change \
-            --set space.$sid \
-            background.color=0x44ffffff \
-            background.corner_radius=5 \
-            background.height=20 \
-            background.drawing=off \
-            label="$sid" \
-            click_script="${homebrewPrefix}/aerospace workspace $sid" \
-            script="$PLUGIN_DIR/aerospace.sh $sid"
-        done
+        source ''${ITEM_DIR}/battery.sh
+        source ''${ITEM_DIR}/clock.sh
+        source ''${ITEM_DIR}/volume.sh
 
         sketchybar --update
       '';
+
       enable = true;
+
+      extraPackages = [ pkgs.jq ];
     };
   };
 }

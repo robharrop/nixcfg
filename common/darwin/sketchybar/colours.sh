@@ -1,0 +1,12 @@
+# Dracula Color Palette
+export DRACULA_BACKGROUND="0xff282a36"
+export DRACULA_CURRENT_LINE="0xff44475a"
+export DRACULA_FOREGROUND="0xfff8f8f2"
+export DRACULA_COMMENT="0xff6272a4"
+export DRACULA_CYAN="0xff8be9fd"
+export DRACULA_GREEN="0xff50fa7b"
+export DRACULA_ORANGE="0xffffb86c"
+export DRACULA_PINK="0xffff79c6"
+export DRACULA_PURPLE="0xffbd93f9"
+export DRACULA_RED="0xffff5555"
+export DRACULA_YELLOW="0xfff1fa8c"
