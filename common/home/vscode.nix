@@ -18,6 +18,7 @@ in
       vscodevim.vim
     ]
     ++ (with vscode-marketplace; [
+      brettm12345.nixfmt-vscode
       github.copilot
       github.copilot-chat
       golang.go
@@ -29,6 +30,7 @@ in
       rust-lang.rust-analyzer
       shopify.ruby-extensions-pack
       sourcegraph.cody-ai
+      tamasfe.even-better-toml
     ]);
 
   mutableExtensionsDir = true;
