@@ -4,9 +4,9 @@ let
 in
 {
 
-  homebrew.casks = [ "aerospace" ];
+  homebrew.casks = [ "nikitabobko/tap/aerospace" ];
 
-  home-manager.users.${username}.home.xdg.configFile = {
+  home-manager.users.${username}.xdg.configFile = {
     "aerospace/aerospace.toml".source = ./aerospace.toml;
   };
 }
