@@ -17,7 +17,7 @@ in
 {
 
   imports = [
-    ./darwin/homebrew.nix
+    ./darwin/homebrew
     ./darwin/sketchybar
   ];
 
