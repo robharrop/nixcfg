@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   inputs,
   home-manager,
   ...
@@ -100,7 +99,8 @@ in
       programs.git = {
         enable = true;
 
-        userName = "Rob Harrop";
+        userName = config.myConfig.name;
+        userEmail = config.myConfig.email;
 
         extraConfig = {
           pull.rebase = "true";

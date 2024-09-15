@@ -10,6 +10,18 @@
               default = "robharrop";
               description = "Username for primary user account";
             };
+
+            name = lib.mkOption {
+              type = lib.types.str;
+              default = "Rob Harrop";
+              description = "Full name of primary user account";
+            };
+
+            email = lib.mkOption {
+              type = lib.types.str;
+              default = "rob@robharrop.dev";
+              description = "Email address for primary user account";
+            };
           };
         };
         default = { };

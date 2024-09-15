@@ -12,6 +12,8 @@ let
 in
 {
 
+  myConfig.email = "rob@bitso.com";
+
   environment.systemPackages = with pkgs; [
     awscli2
     postgresql_15
@@ -36,8 +38,6 @@ in
     {
 
       programs.git = {
-        userEmail = "rob@bitso.com";
-
         signing = {
           key = "ACC3A3D8FD118EFB";
           signByDefault = true;
