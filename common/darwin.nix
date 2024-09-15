@@ -17,6 +17,8 @@ let
 in
 {
 
+  imports = [ ./darwin/sketchybar ];
+
   system = import ./darwin/system.nix { };
 
   nixpkgs.config.allowUnfree = true;

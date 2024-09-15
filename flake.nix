@@ -55,9 +55,12 @@
             username = "robharrop";
           };
           inherit system;
+
           modules = [
             home-manager.darwinModules.home-manager
             nixvim.nixDarwinModules.nixvim
+            # add a username option to the valid set of module options
+            ./options.nix
             ./common/darwin.nix
             ./hosts/${hostName}/default.nix
           ] ++ extraModules;

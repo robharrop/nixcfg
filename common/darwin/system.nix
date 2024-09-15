@@ -25,6 +25,9 @@
       # menu bar item spacing
       NSStatusItemSelectionPadding = 8;
       NSStatusItemSpacing = 12;
+
+      # hide the menu bar by default
+      _HIHideMenuBar = true;
     };
   };
 
