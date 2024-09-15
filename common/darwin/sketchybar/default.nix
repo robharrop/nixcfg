@@ -1,13 +1,13 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   username = config.myConfig.username;
+  pluginsDir = ./plugins;
 in
 {
   config = {
-    home-manager.users.${username}.xdg.configFile = {
-      "sketchybar/plugins/battery.sh".source = ./plugins/battery.sh;
-      "sketchybar/plugins/volume.sh".source = ./plugins/volume.sh;
-    };
+    home-manager.users.${username}.xdg.configFile = lib.mapAttrs' (
+      name: _: lib.nameValuePair "sketchybar/plugins/${name}" { source = "${pluginsDir}/${name}"; }
+    ) (builtins.readDir pluginsDir);
 
     services.sketchybar = {
       config = ''
@@ -43,6 +43,13 @@ in
           label.drawing=true \
           script="$PLUGIN_DIR/volume.sh" \
           --subscribe volume volume_change
+
+        sketchybar --add item clock right \
+          --set clock \
+          icon=󰃰 \
+          icon.color=0xffed8796 \
+          update_freq=10 \
+          script="$PLUGIN_DIR/clock.sh"
 
         sketchybar --update
       '';
