@@ -8,7 +8,7 @@
 }:
 
 let
-  username = inputs.username;
+  username = config.myConfig.username;
   unstable = import "${inputs.unstable}" {
     system = inputs.arch;
     config.allowUnfree = true;

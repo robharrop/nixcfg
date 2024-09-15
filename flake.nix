@@ -52,7 +52,6 @@
         darwin.lib.darwinSystem {
           inputs = inputs // {
             arch = system;
-            username = "robharrop";
           };
           inherit system;
 

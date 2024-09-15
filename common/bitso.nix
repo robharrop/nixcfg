@@ -8,7 +8,7 @@
 }:
 
 let
-  username = inputs.username;
+  username = config.myConfig.username;
 in
 {
 
