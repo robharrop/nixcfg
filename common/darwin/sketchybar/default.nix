@@ -1,5 +1,6 @@
 { config, lib, ... }:
 let
+  homebrewPrefix = config.homebrew.brewPrefix;
   username = config.myConfig.username;
   pluginsDir = ./plugins;
 in
@@ -50,6 +51,22 @@ in
           icon.color=0xffed8796 \
           update_freq=10 \
           script="$PLUGIN_DIR/clock.sh"
+
+        # Aerospace setup
+        sketchybar --add event aerospace_workspace_change
+
+        for sid in $(seq 0 9); do
+        sketchybar --add item space.$sid left \
+            --subscribe space.$sid aerospace_workspace_change \
+            --set space.$sid \
+            background.color=0x44ffffff \
+            background.corner_radius=5 \
+            background.height=20 \
+            background.drawing=off \
+            label="$sid" \
+            click_script="${homebrewPrefix}/aerospace workspace $sid" \
+            script="$PLUGIN_DIR/aerospace.sh $sid"
+        done
 
         sketchybar --update
       '';
