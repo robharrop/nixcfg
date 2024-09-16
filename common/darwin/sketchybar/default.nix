@@ -56,10 +56,10 @@ in
           sticky=on
           padding_right=10
           padding_left=10
-          corner_radius=0
-          y_offset=0
-          margin=0
-          blur_radius=0
+          corner_radius=9
+          y_offset=10
+          margin=10
+          blur_radius=20
           notch_width=188
         )
 
@@ -67,7 +67,6 @@ in
 
         # Item defaults
         defaults=(
-          y_offset=5
           updates=on
           icon.font="$FONT:Bold:14.0"
           icon.color=$DRACULA_FOREGROUND
@@ -91,9 +90,10 @@ in
 
         sketchybar --default "''${defaults[@]}"
 
-        source ''${ITEM_DIR}/battery.sh
         source ''${ITEM_DIR}/clock.sh
+        source ''${ITEM_DIR}/battery.sh
         source ''${ITEM_DIR}/volume.sh
+        source ''${ITEM_DIR}/status.sh
 
         sketchybar --update
       '';

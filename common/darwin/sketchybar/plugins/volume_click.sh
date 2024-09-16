@@ -3,11 +3,11 @@
 WIDTH=100
 
 detail_on() {
-  sketchybar --animate tanh 30 --set volume slider.width=$WIDTH
+  sketchybar --animate tanh 30 --set volume slider.width=$WIDTH padding_right=8
 }
 
 detail_off() {
-  sketchybar --animate tanh 30 --set volume slider.width=0
+  sketchybar --animate tanh 30 --set volume slider.width=0 padding_right=0
 }
 
 toggle_detail() {
