@@ -4,6 +4,8 @@
   "editor.inlineSuggest.suppressSuggestions" = true;
   "workbench.colorTheme" = "Dracula Theme";
 
+  "go.testOnSave" = true;
+
   "[nix]" = {
     "editor.formatOnSave" = true;
   };

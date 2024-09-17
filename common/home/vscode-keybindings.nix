@@ -7,4 +7,11 @@ let
     command = "workbench.action.openEditorAtIndex${toString n}";
   };
 in
-builtins.genList genKeybinding 9
+[
+  {
+    key = "ctrl+t";
+    command = "go.test.file";
+    when = "editorTextFocus && editorLangId == go";
+  }
+]
+++ builtins.genList genKeybinding 9
