@@ -20,6 +20,7 @@ in
     ./darwin/aerospace
     ./darwin/homebrew
     ./darwin/sketchybar
+    ./vim
   ];
 
   system = import ./darwin/system.nix { };
@@ -53,8 +54,6 @@ in
     noto-fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-
-  programs.nixvim = import ./vim { };
 
   programs.zsh.enable = true;
 
