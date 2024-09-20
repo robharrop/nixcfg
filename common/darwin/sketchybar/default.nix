@@ -90,6 +90,8 @@ in
 
         sketchybar --default "''${defaults[@]}"
 
+        source ''${ITEM_DIR}/aerospace.sh
+
         source ''${ITEM_DIR}/clock.sh
         source ''${ITEM_DIR}/battery.sh
         source ''${ITEM_DIR}/volume.sh

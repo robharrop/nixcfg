@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   username = config.myConfig.username;
 in
@@ -10,6 +10,9 @@ in
   };
 
   home-manager.users.${username}.xdg.configFile = {
-    "aerospace/aerospace.toml".source = ./aerospace.toml;
+    "aerospace/aerospace.toml".source = pkgs.substituteAll {
+      src = ./aerospace.toml;
+      sketchybar = "${pkgs.sketchybar}/bin/sketchybar";
+    };
   };
 }
