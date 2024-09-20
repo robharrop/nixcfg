@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.nixvim = {
     enable = true;
@@ -66,6 +66,20 @@
     ];
 
     plugins = {
+      conform-nvim = {
+        enable = true;
+
+        formattersByFt = {
+          nix = [ "nixfmt" ];
+        };
+
+        formatters = {
+          nixfmt = {
+            command = "${lib.getExe pkgs.nixfmt-rfc-style}";
+          };
+        };
+      };
+
       neo-tree.enable = true;
       lualine.enable = true;
       bufferline.enable = true;
