@@ -7,6 +7,9 @@
 
       # lock screen in top left corner
       wvous-tl-corner = 13;
+
+      # disable the annoying quick note in the bottem right corner
+      wvous-br-corner = 1;
     };
 
     screensaver = {
