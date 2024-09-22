@@ -2,7 +2,6 @@
   config,
   pkgs,
   inputs,
-  home-manager,
   ...
 }:
 
@@ -39,15 +38,16 @@ in
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
-    with pkgs;
+    (with pkgs;
     [
       emacs
       helix
       mas
       nixfmt-rfc-style
       ripgrep
+      magic-wormhole-rs
       vim
-    ]
+    ])
     ++ [ unstable.go ];
 
   fonts.packages = with pkgs; [
@@ -73,13 +73,13 @@ in
       home.stateVersion = "23.05";
 
       home.packages =
-        with pkgs;
+        (with pkgs;
         [
           bitwarden-cli
           gh
           htop
           jq
-        ]
+        ])
         ++ (with unstable; [ jetbrains.idea-community ]);
 
       programs.home-manager.enable = true;
