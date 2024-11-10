@@ -38,8 +38,7 @@ in
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
-    (with pkgs;
-    [
+    (with pkgs; [
       emacs
       helix
       mas
@@ -73,8 +72,7 @@ in
       home.stateVersion = "23.05";
 
       home.packages =
-        (with pkgs;
-        [
+        (with pkgs; [
           bitwarden-cli
           gh
           htop
@@ -83,6 +81,12 @@ in
         ++ (with unstable; [ jetbrains.idea-community ]);
 
       programs.home-manager.enable = true;
+
+      programs.direnv = {
+        enable = true;
+        enableZshIntegration = true;
+        nix-direnv.enable = true;
+      };
 
       programs.eza = {
         enable = true;
