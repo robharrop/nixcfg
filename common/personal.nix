@@ -15,6 +15,7 @@ in
       "vagrant"
       "vagrant-vmware-utility"
       "vmware-fusion"
+      "yubico-yubikey-manager"
     ];
   };
 

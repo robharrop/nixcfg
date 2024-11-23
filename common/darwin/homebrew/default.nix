@@ -34,6 +34,7 @@
     masApps = {
       "Todoist: To-Do List & Tasks" = 585829637;
       "iA Writer" = 775737590;
+      "Grammarly: AI Writing Support" = 1462114288;
     };
   };
 }
