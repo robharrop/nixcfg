@@ -16,7 +16,6 @@
       "cameracontroller"
       "google-chrome"
       "firefox"
-      "kindle"
       "ledger-live"
       "logitech-options"
       "logseq"
