@@ -23,10 +23,8 @@
 
       ApplePressAndHoldEnabled = false;
       InitialKeyRepeat = 10;
-      KeyRepeat = 1;
-
+      KeyRepeat = 6;
       # menu bar item spacing
-      NSStatusItemSelectionPadding = 8;
       NSStatusItemSpacing = 12;
 
       # hide the menu bar by default
