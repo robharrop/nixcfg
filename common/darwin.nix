@@ -16,9 +16,7 @@ in
 {
 
   imports = [
-    ./darwin/aerospace
     ./darwin/homebrew
-    ./darwin/sketchybar
     ./vim
   ];
 
@@ -65,7 +63,7 @@ in
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = false;
-  home-manager.users.robharrop =
+  home-manager.users.${username} =
     { pkgs, ... }:
     {
 
@@ -118,11 +116,6 @@ in
 
       programs.starship = {
         enable = true;
-      };
-
-      programs.vscode = import ./home/vscode.nix {
-        inherit pkgs;
-        inherit inputs;
       };
 
       programs.zsh = {

@@ -25,11 +25,6 @@
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
-
-    cloudflare-cert = {
-      url = "https://developers.cloudflare.com/cloudflare-one/static/Cloudflare_CA.pem";
-      flake = false;
-    };
   };
 
   # add the inputs declared above to the argument attribute set
@@ -70,8 +65,7 @@
     in
     {
       darwinConfigurations = processConfigurations {
-        BTSWS0DJQ6LX = darwinSystem "aarch64-darwin" [ ./common/bitso.nix ];
-        BTSWS2FPX1L6L = darwinSystem "aarch64-darwin" [ ./common/bitso.nix ];
+        robharrop-mac = darwinSystem "aarch64-darwin" [ ./common/meta.nix ];
         vetinari = darwinSystem "aarch64-darwin" [ ./common/personal.nix ];
       };
 
