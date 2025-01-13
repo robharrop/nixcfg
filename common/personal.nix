@@ -26,7 +26,6 @@ in
       "google-chrome"
       "ledger-live"
       "logitech-options"
-      "logseq"
       "moonlight"
       "mullvadvpn"
       "r"
