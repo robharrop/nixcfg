@@ -7,32 +7,35 @@ let
   keybindings = import ./vscode-keybindings.nix { };
 in
 {
-  inherit keybindings;
 
   enable = true;
-  extensions =
-    with pkgs.vscode-extensions;
-    [
-      bbenoist.nix
-      dracula-theme.theme-dracula
-      vscodevim.vim
-    ]
-    ++ (with vscode-marketplace; [
-      brettm12345.nixfmt-vscode
-      github.copilot
-      github.copilot-chat
-      golang.go
-      jakebecker.elixir-ls
-      jamesottaway.nix-develop
-      ms-python.python
-      nomicfoundation.hardhat-solidity
-      phoenixframework.phoenix
-      rust-lang.rust-analyzer
-      shopify.ruby-extensions-pack
-      sourcegraph.cody-ai
-      tamasfe.even-better-toml
-    ]);
+  profiles.default = {
+
+    inherit keybindings;
+    extensions =
+      with pkgs.vscode-extensions;
+      [
+        bbenoist.nix
+        dracula-theme.theme-dracula
+        vscodevim.vim
+      ]
+      ++ (with vscode-marketplace; [
+        brettm12345.nixfmt-vscode
+        golang.go
+        jakebecker.elixir-ls
+        jamesottaway.nix-develop
+        ms-python.python
+        nomicfoundation.hardhat-solidity
+        phoenixframework.phoenix
+        rust-lang.rust-analyzer
+        shopify.ruby-extensions-pack
+        sourcegraph.cody-ai
+        tamasfe.even-better-toml
+      ]);
+
+    userSettings = vscode-settings;
+  };
 
   mutableExtensionsDir = true;
-  userSettings = vscode-settings;
+
 }

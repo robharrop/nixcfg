@@ -10,7 +10,7 @@ in
   };
 
   home-manager.users.${username}.xdg.configFile = {
-    "aerospace/aerospace.toml".source = pkgs.substituteAll {
+    "aerospace/aerospace.toml".source = pkgs.replaceVars {
       src = ./aerospace.toml;
       sketchybar = "${pkgs.sketchybar}/bin/sketchybar";
     };

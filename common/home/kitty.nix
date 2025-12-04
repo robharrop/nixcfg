@@ -23,5 +23,5 @@
     macos_option_as_alt = "yes";
     macos_titlebar_color = "#282a36";
   };
-  theme = "Dracula";
+  themeFile = "Dracula";
 }

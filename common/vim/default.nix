@@ -69,13 +69,15 @@
       conform-nvim = {
         enable = true;
 
-        formattersByFt = {
-          nix = [ "nixfmt" ];
-        };
+        settings = {
+          formattersByFt = {
+            nix = [ "nixfmt" ];
+          };
 
-        formatters = {
-          nixfmt = {
-            command = "${lib.getExe pkgs.nixfmt-rfc-style}";
+          formatters = {
+            nixfmt = {
+              command = "${lib.getExe pkgs.nixfmt-rfc-style}";
+            };
           };
         };
       };
@@ -112,6 +114,7 @@
           yaml
         ];
       };
+      web-devicons.enable = true;
       which-key.enable = true;
     };
   };

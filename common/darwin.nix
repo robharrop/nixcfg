@@ -49,22 +49,15 @@ in
 
   fonts.packages = with pkgs; [
     noto-fonts
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
   ];
-
-  programs.zsh.enable = true;
 
   services.emacs = {
     enable = true;
   };
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   homebrew = {
-    casks = [
-      "logseq"
-    ];
+    casks = [ "logseq" ];
   };
 
   home-manager.useGlobalPkgs = true;
@@ -110,11 +103,12 @@ in
       programs.git = {
         enable = true;
 
-        userName = config.myConfig.name;
-        userEmail = config.myConfig.email;
-
-        extraConfig = {
+        settings = {
           pull.rebase = "true";
+          user = {
+            name = config.myConfig.name;
+            email = config.myConfig.email;
+          };
         };
       };
 
@@ -131,7 +125,7 @@ in
           enable = true;
         };
 
-        initExtra = ''
+        initContent = ''
           eval "$(/opt/homebrew/bin/brew shellenv)"
         '';
 
@@ -152,7 +146,10 @@ in
     };
 
   # allow TouchID to authorize sudo
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local = {
+    enable = true;
+    touchIdAuth = true;
+  };
 
   users.users.${username} = {
     name = username;
