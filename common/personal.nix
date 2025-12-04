@@ -11,11 +11,6 @@ let
 in
 {
 
-  imports = [
-    ##./darwin/aerospace
-    ##./darwin/sketchybar
-  ];
-
   homebrew = {
     casks = [
       "bitwarden"
