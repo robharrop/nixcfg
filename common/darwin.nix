@@ -18,7 +18,7 @@ in
   imports = [
     ./darwin/homebrew
     ./darwin/system.nix
-    ./vim
+    ./darwin/vim
   ];
 
   nixpkgs.config = {
