@@ -40,7 +40,6 @@ Utilities and helpers. Not configuration modules.
 - `darwin.nix` - Main Darwin configuration that imports everything
 - `personal.nix` - Extra config for personal machine (more homebrew casks)
 - `meta.nix` - Extra config for work machine
-- `bitso.nix` - Work-specific config (currently unused)
 
 ### `hosts/`
 Host-specific configuration. Currently empty - machine differences are handled by `personal.nix` and `meta.nix`.
