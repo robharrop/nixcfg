@@ -1,45 +1,47 @@
 { ... }:
 {
-  defaults = {
-    dock = {
-      autohide = true;
-      static-only = true;
+  system = {
+    primaryUser = "robharrop";
 
-      # lock screen in top left corner
-      wvous-tl-corner = 13;
+    defaults = {
+      dock = {
+        autohide = true;
+        static-only = true;
 
-      # disable the annoying quick note in the bottem right corner
-      wvous-br-corner = 1;
+        # lock screen in top left corner
+        wvous-tl-corner = 13;
+
+        # disable the annoying quick note in the bottem right corner
+        wvous-br-corner = 1;
+      };
+
+      screensaver = {
+        askForPassword = true;
+        askForPasswordDelay = 5;
+      };
+
+      # use standard function keys
+      NSGlobalDomain = {
+        "com.apple.keyboard.fnState" = true;
+
+        ApplePressAndHoldEnabled = false;
+        InitialKeyRepeat = 10;
+        KeyRepeat = 6;
+        # menu bar item spacing
+        NSStatusItemSpacing = 12;
+
+        # hide the menu bar by default
+        _HIHideMenuBar = false;
+      };
     };
 
-    screensaver = {
-      askForPassword = true;
-      askForPasswordDelay = 5;
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
     };
 
-    # use standard function keys
-    NSGlobalDomain = {
-      "com.apple.keyboard.fnState" = true;
-
-      ApplePressAndHoldEnabled = false;
-      InitialKeyRepeat = 10;
-      KeyRepeat = 6;
-      # menu bar item spacing
-      NSStatusItemSpacing = 12;
-
-      # hide the menu bar by default
-      _HIHideMenuBar = false;
-    };
+    # Used for backwards compatibility, please read the changelog before changing.
+    # $ darwin-rebuild changelog
+    stateVersion = 4;
   };
-
-  keyboard = {
-    enableKeyMapping = true;
-    remapCapsLockToControl = true;
-  };
-
-  primaryUser = "robharrop";
-
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  stateVersion = 4;
 }

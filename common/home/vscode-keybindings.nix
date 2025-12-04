@@ -1,5 +1,3 @@
-{ ... }:
-
 let
   # Open editor tab n with cmd+n
   genKeybinding = n: {

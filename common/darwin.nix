@@ -17,10 +17,9 @@ in
 
   imports = [
     ./darwin/homebrew
+    ./darwin/system.nix
     ./vim
   ];
-
-  system = import ./darwin/system.nix { };
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -68,6 +67,9 @@ in
   home-manager.users.${username} =
     { pkgs, ... }:
     {
+      imports = [
+        ./home/kitty.nix
+      ];
 
       home.stateVersion = "23.05";
 
@@ -114,8 +116,6 @@ in
           };
         };
       };
-
-      programs.kitty = import ./home/kitty.nix { };
 
       programs.starship = {
         enable = true;
