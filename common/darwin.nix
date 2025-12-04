@@ -22,7 +22,10 @@ in
 
   system = import ./darwin/system.nix { };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = _: true;
+  };
 
   nix = {
     extraOptions = ''

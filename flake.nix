@@ -21,6 +21,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -57,7 +58,8 @@
             ./options.nix
             ./common/darwin.nix
             ./hosts/${hostName}/default.nix
-          ] ++ extraModules;
+          ]
+          ++ extraModules;
         };
 
       processConfigurations = builtins.mapAttrs (n: v: v n);

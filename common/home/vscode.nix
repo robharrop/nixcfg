@@ -29,7 +29,6 @@ in
         phoenixframework.phoenix
         rust-lang.rust-analyzer
         shopify.ruby-extensions-pack
-        sourcegraph.cody-ai
         tamasfe.even-better-toml
       ]);
 
