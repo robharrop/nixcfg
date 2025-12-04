@@ -68,7 +68,14 @@ in
     { pkgs, ... }:
     {
       imports = [
+        ./home/direnv.nix
+        ./home/eza.nix
+        ./home/fzf.nix
+        ./home/gh.nix
+        ./home/git.nix
         ./home/kitty.nix
+        ./home/starship.nix
+        ./home/zsh.nix
       ];
 
       home.stateVersion = "23.05";
@@ -83,69 +90,6 @@ in
         ++ (with unstable; [ jetbrains.idea-community ]);
 
       programs.home-manager.enable = true;
-
-      programs.direnv = {
-        enable = true;
-        enableZshIntegration = true;
-        nix-direnv.enable = true;
-      };
-
-      programs.eza = {
-        enable = true;
-        enableZshIntegration = true;
-      };
-
-      programs.fzf = {
-        enable = true;
-        enableZshIntegration = true;
-      };
-
-      programs.gh = {
-        # see https://github.com/nix-community/home-manager/issues/3401
-        enable = false;
-      };
-
-      programs.git = {
-        enable = true;
-
-        settings = {
-          pull.rebase = "true";
-          user = {
-            name = config.myConfig.name;
-            email = config.myConfig.email;
-          };
-        };
-      };
-
-      programs.starship = {
-        enable = true;
-      };
-
-      programs.zsh = {
-        enable = true;
-
-        autosuggestion = {
-          enable = true;
-        };
-
-        initContent = ''
-          eval "$(/opt/homebrew/bin/brew shellenv)"
-        '';
-
-        shellAliases = {
-          ga = "git add";
-          gc = "git commit";
-          gl = "git pull";
-          gp = "git push";
-          gco = "git checkout";
-          gst = "git status";
-
-        };
-
-        syntaxHighlighting = {
-          enable = true;
-        };
-      };
     };
 
   # allow TouchID to authorize sudo
