@@ -12,8 +12,8 @@ in
 {
 
   imports = [
-    ./darwin/aerospace
-    ./darwin/sketchybar
+    ##./darwin/aerospace
+    ##./darwin/sketchybar
   ];
 
   homebrew = {
@@ -31,6 +31,7 @@ in
       "r"
       "raspberry-pi-imager"
       "raycast"
+      "rectangle-pro"
       "remarkable"
       "retroarch"
       "rstudio"

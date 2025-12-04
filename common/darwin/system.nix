@@ -28,7 +28,7 @@
       NSStatusItemSpacing = 12;
 
       # hide the menu bar by default
-      _HIHideMenuBar = true;
+      _HIHideMenuBar = false;
     };
   };
 
