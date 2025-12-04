@@ -5,7 +5,7 @@ Nix Darwin configuration for macOS machines.
 ## Directory Structure
 
 ### `flake.nix`
-Entry point. Defines inputs (nixpkgs, home-manager, etc.) and builds two machine configurations: `robharrop-mac` (work) and `vetinari` (personal).
+Entry point. Defines inputs (nixpkgs, home-manager, etc.) and builds two machine configurations: `robharrop-mac` (work with meta.nix) and `vetinari` (personal with personal.nix).
 
 ### `common/`
 Configuration shared across machines.
@@ -29,6 +29,8 @@ Each file configures one program:
 - `kitty.nix` - Terminal emulator
 - `starship.nix` - Shell prompt
 - `vscode.nix` - VS Code and extensions
+- `vscode-keybindings.nix` - VS Code keybindings (data file)
+- `vscode-settings.nix` - VS Code settings (data file)
 - `zsh.nix` - Shell configuration
 
 #### `common/shared/`
@@ -38,14 +40,8 @@ Utilities and helpers. Not configuration modules.
 
 #### `common/*.nix`
 - `darwin.nix` - Main Darwin configuration that imports everything
-- `personal.nix` - Extra config for personal machine (more homebrew casks)
-- `meta.nix` - Extra config for work machine
-
-### `hosts/`
-Host-specific configuration. Currently empty - machine differences are handled by `personal.nix` and `meta.nix`.
-
-- `robharrop-mac/` - Work laptop
-- `vetinari/` - Personal machine
+- `personal.nix` - Extra config for personal machine (homebrew casks, packages)
+- `meta.nix` - Extra config for work machine (homebrew casks)
 
 ## Building
 

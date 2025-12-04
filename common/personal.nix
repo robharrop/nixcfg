@@ -53,11 +53,4 @@ in
     pkgs.docker
     pkgs.packer
   ];
-
-  home-manager.users.${username} = {
-    programs.vscode = import ./home/vscode.nix {
-      inherit pkgs;
-      inherit inputs;
-    };
-  };
 }

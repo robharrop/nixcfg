@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, osConfig, ... }:
 
 let
   vscode-marketplace = inputs.nix-vscode-extensions.extensions.${inputs.arch}.vscode-marketplace;
@@ -6,34 +6,35 @@ let
   keybindings = import ./vscode-keybindings.nix;
 in
 {
+  programs.vscode = {
+    enable = true;
 
-  enable = true;
-  profiles.default = {
+    mutableExtensionsDir = true;
 
-    inherit keybindings;
-    extensions =
-      with pkgs.vscode-extensions;
-      [
-        bbenoist.nix
-        dracula-theme.theme-dracula
-        vscodevim.vim
-      ]
-      ++ (with vscode-marketplace; [
-        brettm12345.nixfmt-vscode
-        golang.go
-        jakebecker.elixir-ls
-        jamesottaway.nix-develop
-        ms-python.python
-        nomicfoundation.hardhat-solidity
-        phoenixframework.phoenix
-        rust-lang.rust-analyzer
-        shopify.ruby-extensions-pack
-        tamasfe.even-better-toml
-      ]);
+    profiles.default = {
+      inherit keybindings;
 
-    userSettings = vscode-settings;
+      extensions =
+        with pkgs.vscode-extensions;
+        [
+          bbenoist.nix
+          dracula-theme.theme-dracula
+          vscodevim.vim
+        ]
+        ++ (with vscode-marketplace; [
+          brettm12345.nixfmt-vscode
+          golang.go
+          jakebecker.elixir-ls
+          jamesottaway.nix-develop
+          ms-python.python
+          nomicfoundation.hardhat-solidity
+          phoenixframework.phoenix
+          rust-lang.rust-analyzer
+          shopify.ruby-extensions-pack
+          tamasfe.even-better-toml
+        ]);
+
+      userSettings = vscode-settings;
+    };
   };
-
-  mutableExtensionsDir = true;
-
 }

@@ -44,7 +44,7 @@
 
     let
       darwinSystem =
-        system: extraModules: hostName:
+        system: extraModules:
         darwin.lib.darwinSystem {
           inputs = inputs // {
             arch = system;
@@ -57,16 +57,13 @@
             # add a username option to the valid set of module options
             ./common/shared/options.nix
             ./common/darwin.nix
-            ./hosts/${hostName}/default.nix
           ]
           ++ extraModules;
         };
 
-      processConfigurations = builtins.mapAttrs (n: v: v n);
-
     in
     {
-      darwinConfigurations = processConfigurations {
+      darwinConfigurations = {
         robharrop-mac = darwinSystem "aarch64-darwin" [ ./common/meta.nix ];
         vetinari = darwinSystem "aarch64-darwin" [ ./common/personal.nix ];
       };
