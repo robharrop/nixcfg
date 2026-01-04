@@ -19,6 +19,7 @@ in
       "epic-games"
       "firefox"
       "google-chrome"
+      "hammerspoon"
       "hazel"
       "ledger-wallet"
       "logitech-options"

@@ -74,6 +74,7 @@ in
         ./home/fzf.nix
         ./home/gh.nix
         ./home/git.nix
+        ./home/hammerspoon.nix
         ./home/kitty.nix
         ./home/starship.nix
         ./home/vscode.nix
