@@ -12,3 +12,6 @@ end)
 -- Load modules
 local heicConverter = require("heic-converter")
 heicConverter.start()
+
+local tdpOrganizer = require("3dp-organizer")
+tdpOrganizer.start()

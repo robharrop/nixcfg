@@ -9,4 +9,9 @@
     source = ./hammerspoon/heic-converter.lua;
     force = true;
   };
+
+  home.file.".hammerspoon/3dp-organizer.lua" = {
+    source = ./hammerspoon/3dp-organizer.lua;
+    force = true;
+  };
 }
