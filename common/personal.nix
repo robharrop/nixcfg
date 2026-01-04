@@ -19,6 +19,7 @@ in
       "epic-games"
       "firefox"
       "google-chrome"
+      "hazel"
       "ledger-live"
       "logitech-options"
       "moonlight"
