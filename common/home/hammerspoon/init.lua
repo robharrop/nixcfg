@@ -8,3 +8,7 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", hs.reload):start()
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
   hs.reload()
 end)
+
+-- Load modules
+local heicConverter = require("heic-converter")
+heicConverter.start()
