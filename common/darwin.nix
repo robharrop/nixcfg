@@ -60,6 +60,7 @@ in
   };
 
   homebrew = {
+    brews = [ "claude-code" ];
     casks = [ "claude" "logseq" ];
   };
 
