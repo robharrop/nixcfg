@@ -45,6 +45,7 @@ in
       nixfmt-rfc-style
       ripgrep
       magic-wormhole-rs
+      uv
       vim
     ])
     ++ [ unstable.go ];
