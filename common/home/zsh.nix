@@ -13,6 +13,7 @@
 
     initContent = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
+      export PATH="${config.home.homeDirectory}/.local/bin:$PATH"
     '';
 
     shellAliases = {
