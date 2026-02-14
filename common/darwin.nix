@@ -60,7 +60,7 @@ in
   };
 
   homebrew = {
-    casks = [ "logseq" ];
+    casks = [ "claude" "logseq" ];
   };
 
   home-manager.useGlobalPkgs = true;
